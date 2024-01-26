@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+<div class="container mt-5">
+    <h1 th:text="${title}"/>
+    <p>Немного текста</p>
+    <form action="/about" method="post">
+        <label for="info">Информация</label>
+        <textarea name="info" id="info" class="form-control"></textarea><br>
+        <button type="submit" class="btn btn-warning">Добавить</button>
+    </form>
+</div>
+<div class="container mt-5">
+    <h1>Все записи из БД</h1>
+    <div th:each="el : ${info}" class="alert alert-warning mt-2">
+        <p th:text="${el.info}"/>
+    </div>
+</div>
+<div th:insert="blocks/footer :: footer"></div>
+</body>
+</html>
